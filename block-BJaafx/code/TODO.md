@@ -59,9 +59,12 @@ function getOddSum(max = 10) {
 function getProductOfDigits(num) {
   num = +num;
   if (isNaN(num) === "false") {
-    for (var i = 1; i <= lenght; i++) {
-      sum = num % 10;
+    sum = 0;
+    while (num) {
+      sum += num % 10;
+      num = Math.floor(num / 10);
     }
+    return sum;
   } else {
     return `Not a valid input`;
   }
@@ -97,8 +100,8 @@ function getOutput(name) {
   return "Who are you ?";
 }
 
-getOutput("Arya"); // "You are arya" ==>> return from function (store value) ,"Who are you ?" ==>> return from function (store value)
-getOutput("John"); // "You are john" ==>> return from function (store value) , "Who are you ?" ==>> return from function (store value)
+getOutput("Arya"); // "You are arya" ==>> return from function (store value)
+getOutput("John"); // "You are john" ==>> return from function (store value)
 getOutput(); // "Who are you ?" ==>> return from function (store value)
 ```
 
@@ -118,4 +121,33 @@ getOutput(); //  "Who are you ?" ==>> return from function (store value)
 
 9. Can a function have multiple return statement? Give one example if possible and explain the reason.
 
+EXPLANATION: No, a function can not have multiple returns,Although we can use different returns in switch and if else statements, but they also break after one return.
+
 10. What is the difference between `for` loop and `while` loop. What are the different place you can use them? Explain with example.
+
+EXPLANATION: for loop are used when initial and final conditions are given, and while loops are used when the only final conditions are used.
+
+e.g.
+
+```js
+function getOddSum(max = 10) {
+  var sum = 0;
+  for (var i = 1; i <= max; i++) {
+    if (i % 2 !== 0) {
+      sum = sum + i;
+    }
+  }
+  return sum;
+}
+```
+
+e.g.
+
+```js
+let amount = 0,
+  expanse = 500;
+while (amount < 5000) {
+  amount += expanse;
+  return `Party More`;
+}
+```
